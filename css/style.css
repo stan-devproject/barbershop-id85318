@@ -1,0 +1,29 @@
+body {
+  font-size: 14px;
+  line-height: 24px;
+  color: black;
+  font-weight: 700;
+  font-family: "PTSans", "Arial", sans-serif;
+  text-transform: uppercase;
+}
+
+.page-title {
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.quote-title {
+  font-size: 48px;
+  line-height: 48px;
+}
+
+.text-title {
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.features-title {
+  font-size: 30px;
+  line-height: 30px;
+  color: #f7f4f1;
+}
