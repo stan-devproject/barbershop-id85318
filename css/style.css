@@ -1,29 +1,917 @@
 body {
-  font-size: 14px;
-  line-height: 24px;
-  color: black;
-  font-weight: 700;
-  font-family: "PTSans", "Arial", sans-serif;
-  text-transform: uppercase;
-}
+    font-family: "PT Sans Narrow", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
 
-.page-title {
-  font-size: 30px;
-  line-height: 30px;
+    text-transform: uppercase;
+
+    color: black;
 }
 
 .quote-title {
-  font-size: 48px;
-  line-height: 48px;
+    font-size: 48px;
+    line-height: 48px;
 }
 
 .text-title {
-  font-size: 24px;
-  line-height: 24px;
+    font-size: 24px;
+    line-height: 24px;
 }
 
 .features-title {
-  font-size: 30px;
-  line-height: 30px;
-  color: #f7f4f1;
+    font-size: 30px;
+    line-height: 30px;
+
+    color: #f7f4f1;
+}
+
+/* Заметил, что вот так нельзя сделать, если для ссылки уже прописан color
+в обычном состоянии - или я что-то непонимаю?
+Пришлось отдельно прописывать для ссылок некоторых такое поведение*/
+/*a:hover {
+  color: #663d15;
+}*/
+
+/**************************/
+/* Header */
+.main-header {
+    min-height: 72px;
+
+    background-color: #000;
+}
+
+.container {
+    width: 940px;
+    margin: 0 auto;
+}
+
+.clearfix::after {
+    display: table;
+    clear: both;
+
+    content: "";
+}
+
+
+/* Меню */
+.main-navigation {
+    float: left;
+
+    width: 760px;
+}
+
+.main-navigation ul {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.main-navigation li {
+    display: inline-block;
+
+    padding-right: 18px;
+    padding-left: 21px;
+}
+
+.main-navigation a {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+
+    display: block;
+
+    padding-top: 27px;
+    padding-bottom: 29px;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    color: white;
+}
+
+.main-navigation .active {
+    box-shadow: inset 0 -4px 0 0 #fff;
+}
+
+/* Хотя я предпочитаю, когда свободная зона тоже кликабельна*/
+/* Можно реализовать либо тройным селектором либо доп. классом*/
+.main-navigation li:hover {
+    background-color: #242424;
+}
+
+/* Блок авторизации*/
+.user-block {
+    float: right;
+
+    width: 107px;
+
+    text-align: right;
+}
+
+.user-block .sign-up-link {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+
+    display: block;
+
+    padding-top: 25px;
+    padding-right: 21px;
+    padding-bottom: 29px;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    color: white;
+}
+
+.user-block .sign-up-link:hover {
+    background-color: #242424;
+}
+
+.icon-login {
+    position: relative;
+    top: 3px;
+    left: -10px;
+
+    display: inline-block;
+
+    width: 18px;
+    height: 16px;
+
+    background: url("../img/icon-login.png");
+}
+
+.sign-up-link:hover .icon-login {
+    background: url("../img/icon-login-active.png");
+}
+
+/* Основной блок страницы */
+.main-page {
+    /* Не получилось в данном случае использовать margin-bottom*/
+    padding-top: 55px;
+
+    background: #fffcf9 url("../img/bg-texture-1.png");
+}
+
+/* Заголовок страницы*/
+/* Чего-то шрифт не до конца совпадает... */
+.page-title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 30px;
+
+    margin: 0;
+    margin-bottom: 26px;
+}
+
+/* Хлебные крошки */
+.breadcrumbs {
+    font-size: 0;
+    line-height: 0;
+
+    margin: 0;
+    margin-bottom: 57px;
+    padding: 0;
+
+    list-style: none;
+}
+
+/* Корректировка нижнего отступа для страницы с товаром*/
+/* Для выполнения требований по Pixel Perfect*/
+.margin-fix {
+    margin-bottom: 60px;
+}
+
+.breadcrumbs li {
+    font-size: 14px;
+    line-height: 14px;
+
+    position: relative;
+
+    display: inline-block;
+
+    padding-right: 38px;
+}
+
+.breadcrumbs a {
+    text-decoration: none;
+
+    color: #000;
+}
+
+/* Это я инициативу проявил*/
+.breadcrumbs a:hover {
+    color: #5a3007;
+}
+
+.breadcrumbs li::before {
+    position: absolute;
+    top: 3px;
+    left: -23px;
+
+    display: block;
+
+    width: 8px;
+    height: 8px;
+
+    content: "";
+    transform: rotate(45deg);
+
+    background-color: #000;
+}
+
+.breadcrumbs li:first-child::before {
+    display: none;
+}
+
+.breadcrumbs li:last-child {
+    font-size: 13px;
+    line-height: 14px;
+
+    color: #aba9a7;
+}
+
+
+/*                         Левый сайдбар с фильтрами                         */
+.filters-section {
+    float: left;
+
+    width: 240px;
+}
+
+.filters-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24px;
+
+    margin: 0;
+    padding: 0;
+}
+
+.filters-list-checkbox,
+.filters-list-radio {
+    font-size: 14px;
+    line-height: 14px;
+
+    margin: 0;
+    padding: 0;
+
+    border: none;
+}
+
+/*                      Блок с чекбоксами Производители                      */
+.filters-list-checkbox {
+    margin-bottom: 32px;
+}
+
+.filters-list-checkbox div {
+    margin-bottom: 23px;
+}
+
+.filters-list-checkbox .filters-title {
+    margin-bottom: 32px;
+}
+
+.filters-list-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.filters-list-checkbox label {
+    position: relative;
+
+    display: block;
+
+    padding-right: 10px;
+    padding-left: 44px;
+}
+
+.filters-list-checkbox label:hover {
+    cursor: pointer;
+}
+
+.filters-list-checkbox label::before {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    /* Правильно ли я понимаю, что display: block здесь необязателен?*/
+
+    width: 16px;
+    height: 16px;
+
+    content: "";
+
+    border: 2px solid #000;
+}
+
+/* убрал вначале .filters-list-checkbox из ограничений на два селектора*/
+/* Как можно по другому его учесть? )*/
+input[type="checkbox"]:checked ~ label::after {
+    position: absolute;
+    top: 3px;
+    left: 4px;
+
+    display: block;
+
+    width: 12px;
+    height: 12px;
+
+    content: "";
+
+    background: url("../img/checkbox-selected.png") no-repeat;
+}
+
+/* Как-то не так насыщенно цвет смотрится, чем как в макете*/
+input[type="checkbox"]:checked ~ label {
+  color: #663d15;
+}
+
+input[type="checkbox"]:disabled ~ label {
+  color: #adaba9;
+  cursor: default;
+}
+
+/*                   Блок с радиобаттонами Группы товаров                   */
+.filters-list-radio {
+    margin-bottom: 32px;
+}
+
+.filters-list-radio .filters-title {
+    margin-bottom: 35px;
+}
+
+.filters-list-radio div {
+    line-height: 16px;
+
+    margin-bottom: 22px;
+}
+
+.filters-list-radio input[type="radio"] {
+    display: none;
+}
+
+/* Здесь учтено, чтобы при переносе строки отступ сохранялся +
+был отступ от правого края*/
+.filters-list-radio label {
+    position: relative;
+
+    display: block;
+
+    padding-right: 10px;
+    padding-left: 44px;
+}
+
+.filters-list-radio label:hover {
+    cursor: pointer;
+}
+
+.filters-list-radio label::before {
+    position: absolute;
+    top: -2px;
+    left: 0;
+
+    display: block;
+
+    width: 16px;
+    height: 16px;
+
+    content: "";
+
+    border: 2px solid #000;
+    border-radius: 50%;
+}
+
+/*аналогично, чтобы максимум было два селектора*/
+input[type="radio"]:checked ~ label::after {
+    position: absolute;
+    top: 4px;
+    left: 6px;
+
+    display: block;
+
+    width: 0;
+    height: 0;
+
+    content: "";
+
+    border: 4px solid #000;
+    border-radius: 50%;
+}
+
+input[type="radio"]:checked ~ label {
+  color: #663d15;
+}
+
+input[type="radio"]:disabled ~ label {
+  color: #adaba9;
+  cursor: default;
+}
+
+/* Кнопка Показать*/
+.filter-button {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 11px;
+
+    margin: 0;
+    padding: 0;
+    padding: 16px 28px 17px 33px;
+
+    text-transform: uppercase;
+
+    color: #fff;
+    border: none;
+    background-color: #000;
+}
+
+.filter-button:hover {
+    background-color: #663d15;
+}
+
+/* Убрал ненужную синию обводку*/
+.filter-button:focus {
+    outline: none;
+}
+
+
+/* Правая часть с каталогом и пагинацией */
+.wrapper {
+    float: right;
+
+    width: 700px;
+    /* Здесь пришлось сверху двигать, если ли другой способ, чтобы использовать margin-bottom?*/
+    /* для пиксель перфект*/
+    margin-top: 3px;
+}
+
+/* Каталог товаров */
+.items-section {
+    font-size: 0;
+    line-height: 0;
+
+    margin-bottom: 24px;
+}
+
+/* Товар */
+.item {
+    font-size: 14px;
+    line-height: 18px;
+
+    display: inline-block;
+
+    width: 220px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    vertical-align: top;
+
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 1, 1, .2);
+}
+
+.item:hover {
+    box-shadow: 3.2px 3.8px 25px rgba(0, 1, 1, .3);
+}
+
+.item:nth-child(3n) {
+    margin-right: 0;
+    margin-bottom: 0;
+}
+
+.item-image {
+    margin-bottom: 9px;
+}
+
+.item-title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+
+    margin: 0;
+    margin-bottom: 13px;
+    margin-left: 16px;
+    padding: 0;
+
+    text-transform: none;
+
+    color: #000;
+}
+
+.item-title a {
+    text-decoration: none;
+
+    color: #000;
+}
+
+.item-title-up {
+    text-transform: uppercase;
+}
+
+/* Блок с ценой*/
+.item-price-block {
+    font-size: 0;
+    line-height: 0;
+}
+
+/* Именно для страницы с каталогом*/
+/* Правильно ли я уточнил стиль или лучше это другим способом делать?*/
+.item .item-price-block {
+    margin-right: 17px;
+    margin-bottom: 16px;
+    margin-left: 16px;
+}
+
+.item-price {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+
+    display: inline-block;
+
+    width: 106px;
+    padding-top: 14px;
+    padding-bottom: 15px;
+    padding-left: 3px;
+
+    text-align: center;
+    /* Где нужно задавать это свойство и почему, если задать его второму элементу, то оно у меня на него не дейстувует?*/
+    vertical-align: top;
+
+    background-color: #e6e6e6;
+}
+
+/* Ссылка купить в товаре*/
+.item-cart-link {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+
+    display: inline-block;
+
+    padding: 14px 16px 15px 19px;
+
+    text-align: center;
+    /* Вот: middle уже не применяется почему-то*/
+    vertical-align: middle;
+    text-decoration: none;
+
+    color: #fff;
+    background-color: #000;
+}
+
+.item-cart-link:hover {
+    background-color: #663d15;
+}
+
+/*                                 Пагинация                                 */
+.pagination {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+
+    margin: 0;
+    margin-bottom: 47px;
+    padding: 0;
+
+    list-style: none;
+
+    text-transform: uppercase;
+}
+
+.pagination li {
+    display: inline-block;
+
+    margin-right: 4px;
+}
+
+.pagination a {
+    display: block;
+
+    padding: 14px 18px 15px 18px;
+
+    text-decoration: none;
+
+    color: #fff;
+    background-color: #000;
+}
+
+.pagination a:hover {
+    background-color: #663d15;
+}
+
+.pagination .active {
+    display: block;
+
+    padding: 14px 18px 15px 18px;
+
+    color: #000;
+    background-color: #fff;
+}
+
+/*                                   Футер                                   */
+.main-footer {
+    font-size: 14px;
+    line-height: 24px;
+
+    padding-top: 56px;
+    padding-bottom: 41px;
+
+    color: #fff;
+    background: url("../img/bg-footer-line.png") repeat-x,
+    #222 url("../img/bg-texture-2.png");
+}
+
+.main-footer a {
+    color: #fff;
+}
+
+.footer-contacts {
+    float: left;
+
+    width: 351px;
+}
+
+/* Это я инициативу проявил*/
+.footer-contacts a:hover {
+    text-decoration: none;
+
+    color: #c8a581;
+}
+
+.footer-social {
+    float: left;
+
+    width: 240px;
+
+    text-align: center;
+}
+
+.footer-social p {
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+/* Как вообще лучше разметить социальный блок?*/
+.social-block {
+    font-size: 0;
+    line-height: 0;
+    /* Для Pixel-perfect)*/
+
+    margin-left: 5px;
+}
+
+.social-btn {
+    font-size: 14px;
+    line-height: 24px;
+
+    position: relative;
+
+    display: inline-block;
+
+    width: 43px;
+    height: 43px;
+    margin-right: 6px;
+
+    vertical-align: top;
+
+    background-color: #000;
+    /* Можно ли написать текст внутри и убирать его для прогрессивного улучшения*/
+    /* Допустимо ли использование этого для прогрессивного улучшения?*/
+    /*text-indent: -9999px;*/
+    /**/
+}
+
+.social-btn:hover {
+    background-color: #fff;
+}
+
+.icon-vk {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: inline-block;
+    /* Можно ли центровать не указывая конкретный размер?*/
+
+    width: 25px;
+    height: 16px;
+
+    transform: translate(-50%, -50%);
+
+    background: url("../img/social-vk-white.png") no-repeat;
+}
+
+.social-btn:hover .icon-vk {
+    background: url("../img/social-vk-black.png") no-repeat;
+}
+
+.icon-fb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: inline-block;
+
+    width: 12px;
+    height: 22px;
+
+    transform: translate(-50%, -50%);
+
+    background: url("../img/social-fb-white.png") no-repeat;
+}
+
+.social-btn:hover .icon-fb {
+    background: url("../img/social-fb-black.png") no-repeat;
+}
+
+.icon-im {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: inline-block;
+    /* В макете эта иконка не правильно отценрована, к слову*/
+
+    width: 21px;
+    height: 21px;
+
+    transform: translate(-50%, -50%);
+
+    background: url("../img/social-im-white.png") no-repeat;
+}
+
+.social-btn:hover .icon-im {
+    background: url("../img/social-im-black.png") no-repeat;
+}
+
+.footer-copyright {
+    float: right;
+
+    width: 250px;
+
+    text-align: right;
+}
+
+.footer-copyright p {
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 0;
+    padding-right: 30px;
+
+    text-align: right;
+}
+
+.footer-copyright .copyright-link {
+    display: inline-block;
+
+    padding: 9px 20px 10px 23px;
+
+    text-decoration: none;
+
+    background-color: #000;
+}
+
+.footer-copyright .copyright-link:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+
+/*                         Страница просмотра товара                         */
+
+
+
+.item-left-column {
+    float: left;
+
+    width: 460px;
+}
+
+/* Почему снизу под изображением есть небольшое пространство - откуда оно возникает?*/
+.item-image-main {
+    /* Пример, чтобы увидеть пространиство:*/
+    /*background-color: red;*/
+    margin-bottom: 14px;
+}
+
+.item-image-view {
+    box-shadow: 0 0 15px rgba(0, 1, 1, .2);
+}
+
+.item-image-select {
+    font-size: 0;
+    line-height: 0;
+
+    margin-bottom: 40px;
+}
+
+.item-image-preview {
+    font-size: 14px;
+    line-height: 24px;
+
+    display: inline-block;
+
+    margin-right: 20px;
+
+    vertical-align: top;
+}
+
+
+.item-image-preview:last-child {
+    margin-right: 0;
+}
+
+.item-image-preview img {
+    box-shadow: 0 0 15px rgba(0, 1, 1, .2);
+}
+
+.item-image-preview img:hover {
+    box-shadow: 3.2px 3.8px 25px rgba(0, 1, 1, .3);
+}
+
+.item-right-column {
+    float: right;
+
+    width: 390px;
+}
+
+.status-line {
+    margin-top: 17px;
+    margin-bottom: 29px;
+}
+
+.status-left {
+    float: left;
+
+    width: 190px;
+
+    text-align: left;
+}
+
+.status-right {
+    float: right;
+
+    width: 190px;
+    padding-right: 10px;
+
+    text-align: right;
+
+    color: #aeaeae;
+}
+
+/* Не очень пойму, почему текст с макетом не совпадает*/
+.product-item .description {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+
+    margin-bottom: 36px;
+}
+
+/* Отступ именно на странице просмотра товара*/
+/* Как вообще правильно такие отступы задавать, если одинаковые блоки,
+но на разных страницах разные отступы*/
+.product-item .item-price-block {
+    margin-bottom: 65px;
+}
+
+/* Загадка, почему-то на скриншоте при Пиксель Перфект смещен влево на 1 пиксель,
+хотя вроде на макете такого нет*/
+.item-composition-title {
+    font-size: 24px;
+    font-weight: 700;
+
+    margin-bottom: 30px;
+}
+
+.item-composition-list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.item-composition-list li {
+    position: relative;
+
+    margin-left: 20px;
+}
+
+.item-composition-list li::before {
+    position: absolute;
+    top: 8px;
+    left: -18px;
+
+    display: block;
+
+    width: 8px;
+    height: 8px;
+
+    content: "";
+    transform: rotate(45deg);
+
+    background-color: #000;
 }
