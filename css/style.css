@@ -26,12 +26,16 @@ body {
     color: #f7f4f1;
 }
 
-/* Заметил, что вот так нельзя сделать, если для ссылки уже прописан color
-в обычном состоянии - или я что-то непонимаю?
-Пришлось отдельно прописывать для ссылок некоторых такое поведение*/
-/*a:hover {
-  color: #663d15;
-}*/
+/* Заготовленный спрайт для логотипа*/
+/*
+background-image: url("../img/spritesheet.png");
+background-repeat: no-repeat;
+display: block;
+width: 368px;
+height: 204px;
+background-position: -5px -31px;
+*/
+
 
 /**************************/
 /* Header */
@@ -70,9 +74,7 @@ body {
 
 .main-navigation li {
     display: inline-block;
-
-    padding-right: 18px;
-    padding-left: 21px;
+    position: relative;
 }
 
 .main-navigation a {
@@ -84,6 +86,8 @@ body {
 
     padding-top: 27px;
     padding-bottom: 29px;
+    padding-left: 21px;
+    padding-right: 18px;
 
     text-decoration: none;
     text-transform: uppercase;
@@ -91,8 +95,14 @@ body {
     color: white;
 }
 
-.main-navigation .active {
-    box-shadow: inset 0 -4px 0 0 #fff;
+.main-navigation .active::after {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    left: 21px;
+    right: 18px;
+    bottom: 0;
+    height: 4px;
 }
 
 /* Хотя я предпочитаю, когда свободная зона тоже кликабельна*/
@@ -138,14 +148,15 @@ body {
 
     display: inline-block;
 
+    background-image: url("../img/spritesheet.png");
+    background-repeat: no-repeat;
     width: 18px;
     height: 16px;
-
-    background: url("../img/icon-login.png");
+    background-position: -27px -5px;
 }
 
 .sign-up-link:hover .icon-login {
-    background: url("../img/icon-login-active.png");
+    opacity: .3;
 }
 
 /* Основной блок страницы */
@@ -320,7 +331,11 @@ input[type="checkbox"]:checked ~ label::after {
 
     content: "";
 
-    background: url("../img/checkbox-selected.png") no-repeat;
+    background-image: url("../img/spritesheet.png");
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+    background-position: -5px -5px;
 }
 
 /* Как-то не так насыщенно цвет смотрится, чем как в макете*/
@@ -481,7 +496,14 @@ input[type="radio"]:disabled ~ label {
 }
 
 .item-image {
+    display: block;
     margin-bottom: 9px;
+}
+
+.item-image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 .item-title {
@@ -509,60 +531,46 @@ input[type="radio"]:disabled ~ label {
     text-transform: uppercase;
 }
 
-/* Блок с ценой*/
+ /*                               Блок с ценой                               */
 .item-price-block {
-    font-size: 0;
-    line-height: 0;
-}
+    display: table;
 
-/* Именно для страницы с каталогом*/
-/* Правильно ли я уточнил стиль или лучше это другим способом делать?*/
-.item .item-price-block {
-    margin-right: 17px;
-    margin-bottom: 16px;
-    margin-left: 16px;
+    font-size: 14px;
+    font-weight: 700;
+
+    text-align: center;
 }
 
 .item-price {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 14px;
-
-    display: inline-block;
-
-    width: 106px;
-    padding-top: 14px;
-    padding-bottom: 15px;
-    padding-left: 3px;
-
-    text-align: center;
-    /* Где нужно задавать это свойство и почему, если задать его второму элементу, то оно у меня на него не дейстувует?*/
-    vertical-align: top;
+    display: table-cell;
+    vertical-align: middle;
+    width: 109px;
+    height: 43px;
 
     background-color: #e6e6e6;
 }
 
-/* Ссылка купить в товаре*/
 .item-cart-link {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 14px;
-
-    display: inline-block;
-
-    padding: 14px 16px 15px 19px;
-
-    text-align: center;
-    /* Вот: middle уже не применяется почему-то*/
+    display: table-cell;
     vertical-align: middle;
-    text-decoration: none;
+    width: 78px;
+    height: 43px;
 
     color: #fff;
     background-color: #000;
+
+    text-decoration: none;
 }
 
 .item-cart-link:hover {
-    background-color: #663d15;
+    background: #663d15;
+}
+
+.item-price-positioner {
+    display: block;
+    margin-left: 16px;
+    margin-right: 17px;
+    margin-bottom: 16px;
 }
 
 /*                                 Пагинация                                 */
@@ -619,7 +627,7 @@ input[type="radio"]:disabled ~ label {
     padding-bottom: 41px;
 
     color: #fff;
-    background: url("../img/bg-footer-line.png") repeat-x,
+    background: url("../img/bg-footer-line-short.png") repeat-x,
     #222 url("../img/bg-texture-2.png");
 }
 
@@ -701,11 +709,15 @@ input[type="radio"]:disabled ~ label {
 
     transform: translate(-50%, -50%);
 
-    background: url("../img/social-vk-white.png") no-repeat;
+    background-image: url("../img/spritesheet.png");
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 16px;
+    background-position: -90px -5px;
 }
 
 .social-btn:hover .icon-vk {
-    background: url("../img/social-vk-black.png") no-repeat;
+    background-position: -55px -5px;
 }
 
 .icon-fb {
@@ -720,11 +732,15 @@ input[type="radio"]:disabled ~ label {
 
     transform: translate(-50%, -50%);
 
-    background: url("../img/social-fb-white.png") no-repeat;
+    background-image: url("../img/spritesheet.png");
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 22px;
+    background-position: -27px -245px;
 }
 
 .social-btn:hover .icon-fb {
-    background: url("../img/social-fb-black.png") no-repeat;
+    background-position: -5px -245px;
 }
 
 .icon-im {
@@ -740,11 +756,15 @@ input[type="radio"]:disabled ~ label {
 
     transform: translate(-50%, -50%);
 
-    background: url("../img/social-im-white.png") no-repeat;
+    background-image: url("../img/spritesheet.png");
+    background-repeat: no-repeat;
+    width: 21px;
+    height: 21px;
+    background-position: -80px -245px;
 }
 
 .social-btn:hover .icon-im {
-    background: url("../img/social-im-black.png") no-repeat;
+    background-position: -49px -245px;
 }
 
 .footer-copyright {
