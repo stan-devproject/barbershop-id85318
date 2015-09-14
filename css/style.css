@@ -27,16 +27,6 @@ body {
     color: #f7f4f1;
 }
 
-/* Заготовленный спрайт для логотипа*/
-/*
-background-image: url("../img/spritesheet.png");
-background-repeat: no-repeat;
-display: block;
-width: 368px;
-height: 204px;
-background-position: -5px -31px;
-*/
-
 
 /**************************/
 /* Header */
@@ -144,7 +134,8 @@ background-position: -5px -31px;
     background-color: #242424;
 }
 
-.icon-login {
+.sign-up-link::before {
+    content: "";
     position: relative;
     top: 3px;
     left: -10px;
@@ -155,11 +146,11 @@ background-position: -5px -31px;
     background-repeat: no-repeat;
     width: 18px;
     height: 16px;
-    background-position: -27px -5px;
+    background-position: -60px -5px;
 }
 
-.sign-up-link:hover .icon-login {
-    opacity: .3;
+.sign-up-link:hover::before {
+    opacity: 0.3;
 }
 
 /* Основной блок страницы */
@@ -310,7 +301,6 @@ background-position: -5px -31px;
     position: absolute;
     top: -1px;
     left: 0;
-    /* Правильно ли я понимаю, что display: block здесь необязателен?*/
 
     width: 16px;
     height: 16px;
@@ -320,8 +310,6 @@ background-position: -5px -31px;
     border: 2px solid #000;
 }
 
-/* убрал вначале .filters-list-checkbox из ограничений на два селектора*/
-/* Как можно по другому его учесть? )*/
 input[type="checkbox"]:checked ~ label::after {
     position: absolute;
     top: 3px;
@@ -717,11 +705,11 @@ input[type="radio"]:disabled ~ label {
     background-repeat: no-repeat;
     width: 25px;
     height: 16px;
-    background-position: -90px -5px;
+    background-position: -5px -93px;
 }
 
 .social-btn:hover .icon-vk {
-    background-position: -55px -5px;
+    background-position: -74px -67px;
 }
 
 .icon-fb {
@@ -740,11 +728,11 @@ input[type="radio"]:disabled ~ label {
     background-repeat: no-repeat;
     width: 12px;
     height: 22px;
-    background-position: -27px -245px;
+    background-position: -52px -58px;
 }
 
 .social-btn:hover .icon-fb {
-    background-position: -5px -245px;
+    background-position: -30px -58px;
 }
 
 .icon-im {
@@ -764,11 +752,11 @@ input[type="radio"]:disabled ~ label {
     background-repeat: no-repeat;
     width: 21px;
     height: 21px;
-    background-position: -80px -245px;
+    background-position: -85px -36px;
 }
 
 .social-btn:hover .icon-im {
-    background-position: -49px -245px;
+    background-position: -88px -5px;
 }
 
 .footer-copyright {
@@ -801,9 +789,360 @@ input[type="radio"]:disabled ~ label {
 }
 
 
+/*                             Главная страница                              */
+.index-page {
+  background: #000 url("../img/background.jpg") no-repeat center top;
+  color: #fff;
+}
+
+.logo {
+  width: 368px;
+  height: 204px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  margin-top: 60px;
+}
+
+.logo img {
+  width: 368px;
+  height: 204px;
+}
+
+.features-row {
+  margin-bottom: 80px;
+}
+
+.features-item {
+  float: left;
+
+  width: 300px;
+  margin-right: 20px;
+
+  text-align: center;
+}
+
+.features-item:last-child {
+   margin-right: 0;
+}
+
+.features-title {
+  position: relative;
+
+  padding-bottom: 50px;
+  margin-bottom: 30px;
+
+  font-size: 30px;
+  line-height: 42px;
+}
+
+.features-item p {
+  margin: 10px;
+}
+
+.features-title:after {
+  content: "";
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+.index-content {
+  margin-bottom: 35px;
+  padding: 50px 80px;
+
+  color: #000;
+  background:
+    url("../img/bg-separator.png") no-repeat center,
+    #f8f5f2 url("../img/bg-texture-1.png");
+}
+
+.content-column-left {
+  width: 350px; /* спасибо дизайнеру */
+}
+
+.content-column-right {
+  width: 300px;
+}
+
+.content-column-left {
+  float: left;
+}
+
+.content-column-right {
+  float: right;
+}
+
+.content-column-title {
+  margin: 0;
+  margin-bottom: 35px;
+
+  font-size: 30px;
+  line-height: 42px;
+}
+
+.news-preview {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.news-preview li {
+  margin-bottom: 25px;
+}
+
+.news-preview time {
+  text-transform: none;
+}
+
+.btn {
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 33px;
+  margin-right: 16px;
+
+  font-size: 14px;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 700;
+  line-height: 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+
+  color: #fff;
+  background: #000;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:active {
+  background: #663d15;
+}
+
+.btn:disabled {
+  cursor: default;
+  opacity: .5;
+}
+
+.btn:disabled:hover {
+  background: #000;
+}
+
+.gallery {
+  position: relative;
+  height: 260px;
+}
+
+.gallery-content {
+  height: 164px;
+  margin: 0;
+
+  border: 7px solid white;
+  background: #ccc;
+}
+
+.gallery-content img {
+  width: 286px;
+  height: 164px;
+}
+
+.gallery .btn {
+  position: absolute;
+  bottom: 0;
+
+  width: 140px;
+  margin: 0;
+}
+
+.gallery-prev {
+  left: 0;
+}
+
+.gallery-next {
+  right: 0;
+}
+
+.index-content p {
+  margin: 0;
+  margin-bottom: 25px;
+}
+
+.appointment-form  input {
+  float: left;
+
+  margin-right: 20px;
+  margin-bottom: 20px;
+  width: 106px;
+  padding: 10px 15px;
+  border: 2px solid #000;
+
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  text-transform: uppercase;
+
+  color: #000;
+  background: #f9f6f3;
+  outline: none;
+}
+
+.appointment-form  input:focus {
+  border: 2px solid #663d15;
+}
+
+.appointment-form  input:nth-child(2n) {
+  margin-right: 0;
+}
+
+.appointment-form .btn {
+  clear: both;
+  width: 100%;
+}
+
+
+/*                            Страница Прайс-лист                            */
+/* Общие стили для контентных тегов */
+.inner-content {
+  margin-bottom: 75px;
+}
+
+.inner-content h2 {
+  margin-top: 60px;
+  margin-bottom: 30px;
+  
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.inner-content p {
+  margin: 14px 0;
+}
+
+.inner-content table {
+  border-collapse: collapse;
+}
+
+.inner-content td {
+  padding: 10px 15px;
+  border: 2px solid black;
+}
+
+/* Особые стили для контентных тегов */
+.big-heading {
+  margin-top: 55px;
+  margin-bottom: 65px;
+    
+  text-align: center;
+}
+
+.big-heading h2 {
+  position: relative;
+  z-index:2;
+    
+  display: inline;
+  margin: 0;
+  padding: 0 25px;
+    
+  font-size: 48px;
+  line-height: 48px;
+  text-align: center;
+    
+  background: #f8f3f0 url("../img/bg-texture-1.png") repeat;
+}
+
+.big-heading:after {
+  content: "";
+    
+  position: relative;
+  top: -25px;
+  z-index: 1;
+    
+  display: block;
+  border-bottom: 2px solid black;
+}
+
+.custom-list-1 {
+  margin: 14px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.custom-list-1 li {
+  position: relative;
+
+  margin-bottom: 15px;
+  padding-left: 20px;
+}
+
+.custom-list-1 li:before {
+  content: "";
+  
+  position: absolute;
+  top: 8px;
+  left: 0;
+
+  width: 8px;
+  height: 8px;  
+
+  background: #000;
+  transform: rotate(45deg);
+}
+
+.prices-table {
+    width: 100%;
+}
+
+.prices-table td {
+    width: 50%;
+}
+
+.prices-table td:last-child {
+  text-align: center;
+}
+
+.short-text {
+  padding-right: 80px;
+}
+
+/* Колонки для контента */
+.inner-content-columns {
+    margin: 60px 0;
+}
+
+.inner-content-column-left,
+.inner-content-column-right {
+  width: 460px;
+}
+
+.inner-content-column-left {
+  float: left;
+}
+
+.inner-content-column-right {
+  float: right;
+}
+
+.inner-content-column-left *:first-child,
+.inner-content-column-right *:first-child {
+  margin-top: 0;
+}
+.inner-content-column-left *:last-child,
+.inner-content-column-right *:last-child {
+  margin-bottom: 0;
+}
+
+
 /*                         Страница просмотра товара                         */
-
-
 
 .item-left-column {
     float: left;
@@ -935,4 +1274,212 @@ input[type="radio"]:disabled ~ label {
     transform: rotate(45deg);
 
     background-color: #000;
+}
+
+/*                             Всплывающая форма                             */
+.modal-content {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: none;
+
+  width: 300px;
+  margin-top: 150px;
+  margin-left: -230px;
+  padding: 50px 80px;
+
+  color: black;
+  background: #f8f3f0 url("../img/bg-texture-1.png");
+  box-shadow: 0 30px 50px rgba(0,0,0,.7);
+}
+
+.modal-content-close {
+  position: absolute;
+  top: 0;
+  right: -50px;
+
+  width: 23px;
+  height: 23px;
+
+  font-size: 0;
+  cursor: pointer;
+  background: url("../img/spritesheet.png") no-repeat center;
+  background-position: -27px -5px;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-2000px);
+  }
+  70% {
+    transform: translateY(30px);
+  }
+  90% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(10px);
+  }
+}
+
+.modal-content h2 {
+  margin: 0;
+  margin-bottom: 20px;
+
+  font-size: 30px;
+  line-height: 42px;
+}
+
+.modal-content p {
+  margin: 0;
+  margin-bottom: 14px;
+}
+
+.modal-content .login-form {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 236px;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  padding-right: 40px;
+
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  text-transform: uppercase;
+
+  color: #000;
+  border: 2px solid #000;
+  outline: none;
+  background: #f9f6f3;
+}
+
+.login-form input:focus {
+  border-color: #663d15;
+}
+
+.login-form input.icon-user {
+  background-image: url("../img/icon-user.png");
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+}
+
+.login-form input.icon-password {
+  background-image: url("../img/icon-password.png");
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+}
+
+.login-form .restore {
+  float: right;
+  color: #000;
+}
+
+.login-form .btn {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.login-form input[type="checkbox"] {
+  display: none;
+}
+
+.login-form label {
+    position: relative;
+
+    display: inline-block;
+
+    padding-right: 10px;
+    padding-left: 30px;
+}
+
+.login-form label:hover {
+    cursor: pointer;
+}
+
+.login-form label::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+
+    width: 16px;
+    height: 16px;
+
+    content: "";
+
+    border: 2px solid #000;
+}
+
+.login-form input[type="checkbox"]:checked + label::after {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+
+    display: inline-block;
+
+    width: 12px;
+    height: 12px;
+
+    content: "";
+
+    background-image: url("../img/spritesheet.png");
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+    background-position: -5px -5px;
+}
+
+.login-form input[type="checkbox"]:checked + label {
+  color: #663d15;
+}
+
+.login-form input[type="checkbox"]:disabled + label {
+  color: #adaba9;
+  cursor: default;
+}
+
+/*                             Всплывающая карта                             */
+.modal-content-map {
+  display: none;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  width: 766px;
+  height: 561px;
+  margin-left: -390px;
+  margin-top: -287.5px;
+  border: 7px solid white;
+
+  background: #e9e5dc url("../img/map.png");
+  box-shadow: 0 30px 50px rgba(0,0,0,.7);
+}
+
+.modal-content-show {
+  display: block;
+  animation: bounce 0.6s;
+}
+
+.modal-error {
+  animation: shake 0.6s;
 }
